@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 
 import static org.junit.Assert.*;
 
-public class CreateTestSuiteControllerControllerTestEntity extends BaseControllerTest {
+public class CreateTestSuiteControllerTest extends BaseControllerTest {
 
     @Test
     public void shouldCreateNewTestSuite() throws Exception {

@@ -4,6 +4,7 @@ import com.deadpool.manager.domain.entity.ExecutionStrategyEntity;
 import com.deadpool.manager.domain.model.ExecutionStrategy;
 import com.deadpool.manager.repository.ExecutionStrategyRepository;
 import com.deadpool.manager.service.exception.ResourceAlreadyExist;
+import com.deadpool.manager.service.exception.ResourceNotExists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,19 @@ public class ExecutionStrategyServiceImpl implements ExecutionStrategyService {
 
         ExecutionStrategyEntity savedExecutionStrategyEntity = executionStrategyRepository.save(executionStrategy.toEntity());
         return savedExecutionStrategyEntity.toDTO();
+    }
+
+    @Override
+    public ExecutionStrategy getExecutionStrategy(String executionStrategyName) {
+        return retrieveExecutionStrategy(executionStrategyName).toDTO();
+    }
+
+    private ExecutionStrategyEntity retrieveExecutionStrategy(String executionStrategyName) {
+        Optional<ExecutionStrategyEntity> strategyEntity = executionStrategyRepository.findByName(executionStrategyName);
+        if (!strategyEntity.isPresent()) {
+            throw new ResourceNotExists("ExecutionStrategy doesn't exist.");
+        }
+        return strategyEntity.get();
     }
 
     private void isResourceAlreadyExists(String testSuiteName) {

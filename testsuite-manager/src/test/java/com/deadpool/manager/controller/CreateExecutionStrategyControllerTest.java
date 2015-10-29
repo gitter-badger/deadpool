@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 
 import static org.junit.Assert.*;
 
-public class CreateExecutionStrategyEntityControllerControllerTest extends BaseControllerTest {
+public class CreateExecutionStrategyControllerTest extends BaseControllerTest {
 
     @Test
     public void shouldCreateExecutionStrategy() throws Exception {

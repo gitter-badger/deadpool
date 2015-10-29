@@ -4,6 +4,7 @@ import com.deadpool.manager.domain.entity.TestSuiteEntity;
 import com.deadpool.manager.domain.model.TestSuite;
 import com.deadpool.manager.repository.TestSuiteRepository;
 import com.deadpool.manager.service.exception.ResourceAlreadyExist;
+import com.deadpool.manager.service.exception.ResourceNotExists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,20 +21,33 @@ public class TestSuiteServiceImpl implements TestSuiteService {
 
     @Override
     public TestSuite createTestSuite(TestSuite testSuite) {
-        isResourceAlreadyExists(testSuite.getName());
+        validateTestSuiteIsMissing(testSuite.getName());
         TestSuiteEntity suiteEntity = testSuiteRepository.save(testSuite.toEntity());
         return suiteEntity.toDTO();
-    }
-
-    private void isResourceAlreadyExists(String testSuiteName) {
-        Optional<TestSuiteEntity> testSuiteOptional = testSuiteRepository.findByName(testSuiteName);
-        if (testSuiteOptional.isPresent()) {
-            throw new ResourceAlreadyExist("TestSuite with this name is already exist.");
-        }
     }
 
     @Override
     public void runTestSuite(String testSuiteName) {
         Optional<TestSuiteEntity> testSuiteEntity = testSuiteRepository.findByName(testSuiteName);
+    }
+
+    @Override
+    public TestSuite getTestSuite(String testSuiteName) {
+        return retrieveTestSuite(testSuiteName).toDTO();
+    }
+
+    private TestSuiteEntity retrieveTestSuite(String testSuiteName) {
+        Optional<TestSuiteEntity> suiteEntity = testSuiteRepository.findByName(testSuiteName);
+        if (!suiteEntity.isPresent()) {
+            throw new ResourceNotExists("TestSuite doesn't exist.");
+        }
+        return suiteEntity.get();
+    }
+
+    private void validateTestSuiteIsMissing(String testSuiteName) {
+        Optional<TestSuiteEntity> testSuiteOptional = testSuiteRepository.findByName(testSuiteName);
+        if (testSuiteOptional.isPresent()) {
+            throw new ResourceAlreadyExist("TestSuite with this name is already exist.");
+        }
     }
 }

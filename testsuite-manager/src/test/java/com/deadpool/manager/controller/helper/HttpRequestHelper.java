@@ -5,6 +5,7 @@ import com.deadpool.manager.domain.model.TestSuite;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 
+import static com.jayway.restassured.RestAssured.get;
 import static com.jayway.restassured.RestAssured.given;
 
 /**
@@ -18,5 +19,13 @@ public class HttpRequestHelper {
 
     public static Response callNewExecutionStrategyEndpoint(ExecutionStrategy executionStrategy) {
         return given().contentType(ContentType.JSON).body(executionStrategy).when().post("/execution-strategy");
+    }
+
+    public static Response callGetTestSuiteEndpoint(String testSuiteName) {
+        return get("/test-suite/" + testSuiteName);
+    }
+
+    public static Response callGetExecutionStrategyEndpoint(String executionStrategyName) {
+        return get("/execution-strategy/" + executionStrategyName);
     }
 }

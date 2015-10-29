@@ -7,7 +7,6 @@ import java.util.UUID;
 
 /**
  * Created by roothema on 2015.10.05..
- * Project: rest-api-metrics
  */
 @Entity
 public class ExecutionProcess {

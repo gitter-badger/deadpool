@@ -5,7 +5,6 @@ import com.deadpool.manager.domain.TestSuite;
 
 /**
  * Created by roothema on 2015.10.08..
- * Project: rest-api-metrics
  */
 public class TestSuiteWithStrategy {
 

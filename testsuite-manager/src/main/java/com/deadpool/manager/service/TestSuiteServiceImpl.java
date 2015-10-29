@@ -10,7 +10,6 @@ import java.util.Optional;
 
 /**
  * Created by roothema on 2015.10.08..
- * Project: rest-api-metrics
  */
 @Service
 public class TestSuiteServiceImpl implements TestSuiteService {

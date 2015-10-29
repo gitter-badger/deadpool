@@ -9,7 +9,6 @@ import static com.jayway.restassured.RestAssured.given;
 
 /**
  * Created by roothema on 2015.10.08..
- * Project: rest-api-metrics
  */
 public class HttpRequestHelper {
 

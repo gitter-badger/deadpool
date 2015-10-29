@@ -18,7 +18,6 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Created by roothema on 2015.10.08..
- * Project: rest-api-metrics
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)

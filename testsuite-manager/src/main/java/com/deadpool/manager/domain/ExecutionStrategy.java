@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 /**
  * Created by roothema on 2015.10.06..
- * Project: rest-api-metrics
  */
 @Entity
 public class ExecutionStrategy {

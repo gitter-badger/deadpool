@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by roothema on 2015.10.08..
- * Project: rest-api-metrics
  */
 @RestController
 public class CreateExecutionStrategyController {

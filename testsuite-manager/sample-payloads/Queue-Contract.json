@@ -1,0 +1,28 @@
+{
+  "name": "sample-SuiteName",
+  "httpActions": [
+    {
+      "name": "create something on XY rest endpoint",
+      "headers": [
+        {
+          "Accept",
+          "something"
+        },
+        {"foo": "bar"}
+      ],
+      "url": "http://localhost:8081/sample-endpoint-post",
+      "method": "POST",
+      "payload": "{'foo':'bar'}"
+    },
+    {
+      "name": "get object by XY rest endpoint",
+      "url": "http://localhost:8081/sample-endpoint-get",
+      "method": "GET"
+    }
+  ],
+  "execution-strategy": {
+    "name": "sample-ExecutionStrategy",
+    "strategy": "sequential",
+    "duration": "3600"
+  }
+}

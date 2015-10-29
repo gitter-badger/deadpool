@@ -1,6 +1,7 @@
 package com.deadpool.manager.service;
 
-import com.deadpool.manager.domain.TestSuite;
+import com.deadpool.manager.domain.entity.TestSuiteEntity;
+import com.deadpool.manager.domain.model.TestSuite;
 import com.deadpool.manager.repository.TestSuiteRepository;
 import com.deadpool.manager.service.exception.ResourceAlreadyExist;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,13 @@ public class TestSuiteServiceImpl implements TestSuiteService {
 
     @Override
     public TestSuite createTestSuite(TestSuite testSuite) {
-        Optional<TestSuite> testSuiteOptional = Optional.ofNullable(testSuiteRepository.findByName(testSuite.getName()));
-        isResourceAlreadyExists(testSuiteOptional);
-        return testSuiteRepository.save(testSuite);
+        isResourceAlreadyExists(testSuite.getName());
+        TestSuiteEntity suiteEntity = testSuiteRepository.save(testSuite.toEntity());
+        return suiteEntity.toDTO();
     }
 
-    private void isResourceAlreadyExists(Optional<TestSuite> testSuiteOptional) {
+    private void isResourceAlreadyExists(String testSuiteName) {
+        Optional<TestSuiteEntity> testSuiteOptional = testSuiteRepository.findByName(testSuiteName);
         if (testSuiteOptional.isPresent()) {
             throw new ResourceAlreadyExist("TestSuite with this name is already exist.");
         }
@@ -32,6 +34,6 @@ public class TestSuiteServiceImpl implements TestSuiteService {
 
     @Override
     public void runTestSuite(String testSuiteName) {
-        TestSuite testSuite = testSuiteRepository.findByName(testSuiteName);
+        Optional<TestSuiteEntity> testSuiteEntity = testSuiteRepository.findByName(testSuiteName);
     }
 }

@@ -1,4 +1,6 @@
-package com.deadpool.manager.domain;
+package com.deadpool.manager.domain.entity;
+
+import com.deadpool.manager.domain.model.HttpHeader;
 
 import javax.persistence.*;
 
@@ -6,7 +8,7 @@ import javax.persistence.*;
  * Created by roothema on 2015.10.06..
  */
 @Entity
-public class HttpHeader {
+public class HttpHeaderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,10 +23,10 @@ public class HttpHeader {
     @Version
     private Integer version;
 
-    protected HttpHeader() {
+    protected HttpHeaderEntity() {
     }
 
-    public HttpHeader(String key, String value) {
+    public HttpHeaderEntity(String key, String value) {
         this.key = key;
         this.value = value;
     }
@@ -50,4 +52,10 @@ public class HttpHeader {
     }
 
 
+    public HttpHeader toDTO() {
+        HttpHeader httpHeader = new HttpHeader();
+        httpHeader.setKey(key);
+        httpHeader.setValue(value);
+        return httpHeader;
+    }
 }

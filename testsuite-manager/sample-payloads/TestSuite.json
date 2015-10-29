@@ -5,8 +5,7 @@
       "name": "create something on XY rest endpoint",
       "headers": [
         {
-          "Accept",
-          "something"
+          "Accept": "something"
         },
         {"foo": "bar"}
       ],

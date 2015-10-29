@@ -1,13 +1,16 @@
-package com.deadpool.manager.domain;
+package com.deadpool.manager.domain.entity;
+
+import com.deadpool.manager.domain.model.HttpAction;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by roothema on 2015.10.05..
  */
 @Entity
-public class HttpAction {
+public class HttpActionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +19,12 @@ public class HttpAction {
     @Column(nullable = false, length = 100, unique = true)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "ACTION_TO_HEADER",
             joinColumns = @JoinColumn(name = "httpAction_id"),
             inverseJoinColumns = @JoinColumn(name = "httpHeader_id"))
     @Column(nullable = true)
-    private Set<HttpHeader> headers;
+    private Set<HttpHeaderEntity> headers;
 
     @Column(nullable = false)
     private String url;
@@ -35,7 +38,7 @@ public class HttpAction {
     @Version
     private Integer version;
 
-    public HttpAction() {
+    public HttpActionEntity() {
     }
 
     public Long getId() {
@@ -50,11 +53,11 @@ public class HttpAction {
         this.name = name;
     }
 
-    public Set<HttpHeader> getHeaders() {
+    public Set<HttpHeaderEntity> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(Set<HttpHeader> headers) {
+    public void setHeaders(Set<HttpHeaderEntity> headers) {
         this.headers = headers;
     }
 
@@ -93,5 +96,15 @@ public class HttpAction {
                 ", payload='" + payload + '\'' +
                 ", version=" + version +
                 '}';
+    }
+
+    public HttpAction toDTO() {
+        HttpAction httpAction = new HttpAction();
+        httpAction.setName(name);
+        httpAction.setUrl(url);
+        httpAction.setMethod(method);
+        httpAction.setPayload(payload);
+        httpAction.setHeaders(headers.stream().map(HttpHeaderEntity::toDTO).collect(Collectors.toSet()));
+        return httpAction;
     }
 }

@@ -1,4 +1,7 @@
-package com.deadpool.manager.domain;
+package com.deadpool.manager.domain.entity;
+
+import com.deadpool.manager.domain.ExecutionMode;
+import com.deadpool.manager.domain.model.ExecutionStrategy;
 
 import javax.persistence.*;
 
@@ -6,7 +9,7 @@ import javax.persistence.*;
  * Created by roothema on 2015.10.06..
  */
 @Entity
-public class ExecutionStrategy {
+public class ExecutionStrategyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +19,7 @@ public class ExecutionStrategy {
     private String name;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private ExecutionMode executionMode;
 
     @Column(nullable = false)
@@ -24,10 +28,10 @@ public class ExecutionStrategy {
     @Version
     private Integer version;
 
-    protected ExecutionStrategy() {
+    public ExecutionStrategyEntity() {
     }
 
-    public ExecutionStrategy(String name) {
+    public ExecutionStrategyEntity(String name) {
         this.name = name;
     }
 
@@ -57,5 +61,9 @@ public class ExecutionStrategy {
 
     public void setDuration(long duration) {
         this.duration = duration;
+    }
+
+    public ExecutionStrategy toDTO() {
+        return new ExecutionStrategy(name, executionMode, duration);
     }
 }

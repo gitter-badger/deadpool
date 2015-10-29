@@ -1,9 +1,9 @@
 package com.deadpool.manager.controller;
 
 import com.deadpool.manager.Application;
-import com.deadpool.manager.domain.HttpAction;
-import com.deadpool.manager.domain.HttpHeader;
-import com.deadpool.manager.domain.TestSuite;
+import com.deadpool.manager.domain.entity.HttpActionEntity;
+import com.deadpool.manager.domain.entity.HttpHeaderEntity;
+import com.deadpool.manager.domain.entity.TestSuiteEntity;
 import com.deadpool.manager.repository.TestSuiteRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.restassured.RestAssured;
@@ -28,7 +28,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebIntegrationTest(randomPort = true)
-public class GetTestSuiteControllerTest {
+public class GetTestSuiteControllerTestEntity {
 
     private static final String SAMPLE_SUITE_NAME = "sample-SuiteName";
 
@@ -47,23 +47,23 @@ public class GetTestSuiteControllerTest {
     public void testGetTestSuite() throws Exception {
 
         //given
-        HttpHeader httpHeader = new HttpHeader("key", "value");
+        HttpHeaderEntity httpHeaderEntity = new HttpHeaderEntity("key", "value");
 
-        HttpAction postAction = new HttpAction();
+        HttpActionEntity postAction = new HttpActionEntity();
         postAction.setName("create something on XY rest endpoint");
         postAction.setMethod("POST");
         postAction.setPayload("{'foo':'bar'}");
         postAction.setUrl("http://localhost:8081/sample-endpoint-post");
 
-        HttpAction getAction = new HttpAction();
+        HttpActionEntity getAction = new HttpActionEntity();
         getAction.setName("get object by XY rest endpoint");
         getAction.setMethod("GET");
         getAction.setUrl("http://localhost:8081/sample-endpoint-get");
-        getAction.setHeaders(Stream.of(httpHeader).collect(Collectors.toSet()));
+        getAction.setHeaders(Stream.of(httpHeaderEntity).collect(Collectors.toSet()));
 
-        TestSuite savedTestSuite = new TestSuite(SAMPLE_SUITE_NAME, Stream.of(postAction, getAction).collect(Collectors.toList()));
+        TestSuiteEntity savedTestSuiteEntity = new TestSuiteEntity(SAMPLE_SUITE_NAME, Stream.of(postAction, getAction).collect(Collectors.toList()));
 
-        testSuiteRepository.save(savedTestSuite);
+        testSuiteRepository.save(savedTestSuiteEntity);
 
         //when
         Response response = get("/test-suite/" + SAMPLE_SUITE_NAME);
@@ -71,21 +71,21 @@ public class GetTestSuiteControllerTest {
         //then
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
 
-        TestSuite responseTestSuite = new ObjectMapper().readValue(response.getBody().asString(), TestSuite.class);
-        assertEquals(savedTestSuite.getName(), responseTestSuite.getName());
-        assertEquals(savedTestSuite.getId(), responseTestSuite.getId());
-        assertEquals(2, responseTestSuite.getHttpActions().size());
-        assertTrue(responseTestSuite.getHttpActions()
+        TestSuiteEntity responseTestSuiteEntity = new ObjectMapper().readValue(response.getBody().asString(), TestSuiteEntity.class);
+        assertEquals(savedTestSuiteEntity.getName(), responseTestSuiteEntity.getName());
+        assertEquals(savedTestSuiteEntity.getId(), responseTestSuiteEntity.getId());
+        assertEquals(2, responseTestSuiteEntity.getHttpActionEntities().size());
+        assertTrue(responseTestSuiteEntity.getHttpActionEntities()
                 .stream()
                 .anyMatch(c -> postAction.getMethod().equals(c.getMethod())
                         && postAction.getName().equals(c.getName())
                         && postAction.getPayload().equals(c.getPayload())
                         && postAction.getUrl().equals(c.getUrl())));
-        assertTrue(responseTestSuite.getHttpActions()
+        assertTrue(responseTestSuiteEntity.getHttpActionEntities()
                 .stream()
                 .anyMatch(c -> getAction.getMethod().equals(c.getMethod())
                         && getAction.getName().equals(c.getName())
                         && getAction.getUrl().equals(c.getUrl())
-                        && c.getHeaders().stream().filter(h -> h.getKey().equals(httpHeader.getKey()) && h.getValue().equals(httpHeader.getValue())).findAny().isPresent()));
+                        && c.getHeaders().stream().filter(h -> h.getKey().equals(httpHeaderEntity.getKey()) && h.getValue().equals(httpHeaderEntity.getValue())).findAny().isPresent()));
     }
 }

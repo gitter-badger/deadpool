@@ -1,7 +1,7 @@
 package com.deadpool.manager.controller.helper;
 
-import com.deadpool.manager.domain.ExecutionStrategy;
-import com.deadpool.manager.domain.TestSuite;
+import com.deadpool.manager.domain.model.ExecutionStrategy;
+import com.deadpool.manager.domain.model.TestSuite;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 
@@ -12,11 +12,11 @@ import static com.jayway.restassured.RestAssured.given;
  */
 public class HttpRequestHelper {
 
-    public static Response callNewTestSuiteEndpoint(TestSuite newTestSuite) {
-        return given().contentType(ContentType.JSON).body(newTestSuite).when().post("/test-suite");
+    public static Response callNewTestSuiteEndpoint(TestSuite testSuite) {
+        return given().contentType(ContentType.JSON).body(testSuite).when().post("/test-suite");
     }
 
-    public static Response callNewExecutionStrategyEndpoint(TestSuite defaultTestSuite, ExecutionStrategy executionStrategy) {
-        return given().contentType(ContentType.JSON).body(executionStrategy).when().post("/test-suite/" + defaultTestSuite.getName() + "/execution-strategy");
+    public static Response callNewExecutionStrategyEndpoint(ExecutionStrategy executionStrategy) {
+        return given().contentType(ContentType.JSON).body(executionStrategy).when().post("/execution-strategy");
     }
 }

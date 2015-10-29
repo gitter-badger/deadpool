@@ -1,6 +1,6 @@
 package com.deadpool.manager.service;
 
-import com.deadpool.manager.domain.TestSuite;
+import com.deadpool.manager.domain.model.TestSuite;
 
 /**
  * Created by roothema on 2015.10.08..

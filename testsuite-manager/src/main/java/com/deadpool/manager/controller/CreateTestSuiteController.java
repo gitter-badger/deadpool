@@ -1,8 +1,7 @@
 package com.deadpool.manager.controller;
 
-import com.deadpool.manager.domain.TestSuite;
+import com.deadpool.manager.domain.model.TestSuite;
 import com.deadpool.manager.service.TestSuiteService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,16 +22,16 @@ public class CreateTestSuiteController {
     private TestSuiteService testSuiteService;
 
     @RequestMapping(value = "/test-suite", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity createTestSuite(@RequestBody() TestSuite testSuite) throws JsonProcessingException {
-        TestSuite savedTestSuite = testSuiteService.createTestSuite(testSuite);
+    public ResponseEntity createTestSuite(@RequestBody() TestSuite testSuite) {
+        TestSuite savedTestSuiteEntity = testSuiteService.createTestSuite(testSuite);
 
-        MultiValueMap headers = createHttpHeaders(savedTestSuite);
+        MultiValueMap headers = createHttpHeaders(savedTestSuiteEntity.getName());
 
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
-    private MultiValueMap createHttpHeaders(TestSuite suite) {
-        String entityURI = "/test-suite/" + suite.getId();
+    private MultiValueMap createHttpHeaders(String testSuiteName) {
+        String entityURI = "/test-suite/" + testSuiteName;
 
         MultiValueMap headers = new HttpHeaders();
         headers.add(HttpHeaders.LOCATION, entityURI);

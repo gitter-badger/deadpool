@@ -1,6 +1,6 @@
 package com.deadpool.manager.controller;
 
-import com.deadpool.manager.domain.TestSuite;
+import com.deadpool.manager.domain.entity.TestSuiteEntity;
 import com.deadpool.manager.repository.TestSuiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +21,13 @@ public class GetTestSuiteController {
     private TestSuiteRepository testSuiteRepository;
 
     @RequestMapping(value = "/test-suite/{test-suite-name}", method = RequestMethod.GET, produces = "application/json")
-    public TestSuite getTestSuite(@PathVariable("test-suite-name") String testSuiteName) {
-        return testSuiteRepository.findByName(testSuiteName);
+    public TestSuiteEntity getTestSuite(@PathVariable("test-suite-name") String testSuiteName) {
+        return testSuiteRepository.findByName(testSuiteName).get();
     }
 
     @RequestMapping(value = "/test-suites", method = RequestMethod.GET, produces = "application/json")
     public List<String> getTestSuites() {
-        Iterable<TestSuite> suites = testSuiteRepository.findAll();
+        Iterable<TestSuiteEntity> suites = testSuiteRepository.findAll();
 
         List<String> suiteNames = new ArrayList<>();
         suites.forEach(c -> suiteNames.add(c.getName()));

@@ -1,13 +1,12 @@
 package com.deadpool.manager.service;
 
-import com.deadpool.manager.domain.ExecutionStrategy;
-import com.deadpool.manager.service.dto.TestSuiteWithStrategy;
+import com.deadpool.manager.domain.model.ExecutionStrategy;
 
 /**
  * Created by roothema on 2015.10.08..
  */
 public interface ExecutionStrategyService {
 
-    TestSuiteWithStrategy createExecutionStrategy(String testSuiteName, ExecutionStrategy executionStrategy);
+    ExecutionStrategy createExecutionStrategy(ExecutionStrategy executionStrategy);
 
 }

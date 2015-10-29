@@ -1,4 +1,6 @@
-package com.deadpool.manager.domain;
+package com.deadpool.manager.domain.entity;
+
+import com.deadpool.manager.domain.Status;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +11,7 @@ import java.util.UUID;
  * Created by roothema on 2015.10.05..
  */
 @Entity
-public class ExecutionProcess {
+public class ExecutionProcessEntity {
 
     @Id
     @Column(unique = true, nullable = false)
@@ -24,7 +26,10 @@ public class ExecutionProcess {
     @Column(nullable = false)
     private String executionStrategyName;
 
-    public ExecutionProcess(Status status, String testSuiteName, String executionStrategyName) {
+    protected ExecutionProcessEntity() {
+    }
+
+    public ExecutionProcessEntity(Status status, String testSuiteName, String executionStrategyName) {
         id = UUID.randomUUID();
         this.status = status;
         this.testSuiteName = testSuiteName;

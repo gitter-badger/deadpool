@@ -1,26 +1,26 @@
 package com.deadpool.manager.service.dto;
 
-import com.deadpool.manager.domain.ExecutionStrategy;
-import com.deadpool.manager.domain.TestSuite;
+import com.deadpool.manager.domain.entity.ExecutionStrategyEntity;
+import com.deadpool.manager.domain.entity.TestSuiteEntity;
 
 /**
  * Created by roothema on 2015.10.08..
  */
 public class TestSuiteWithStrategy {
 
-    private final TestSuite testSuite;
-    private final ExecutionStrategy executionStrategy;
+    private final TestSuiteEntity testSuiteEntity;
+    private final ExecutionStrategyEntity executionStrategyEntity;
 
-    public TestSuiteWithStrategy(TestSuite testSuite, ExecutionStrategy executionStrategy) {
-        this.testSuite = testSuite;
-        this.executionStrategy = executionStrategy;
+    public TestSuiteWithStrategy(TestSuiteEntity testSuiteEntity, ExecutionStrategyEntity executionStrategyEntity) {
+        this.testSuiteEntity = testSuiteEntity;
+        this.executionStrategyEntity = executionStrategyEntity;
     }
 
-    public TestSuite getTestSuite() {
-        return testSuite;
+    public TestSuiteEntity getTestSuiteEntity() {
+        return testSuiteEntity;
     }
 
-    public ExecutionStrategy getExecutionStrategy() {
-        return executionStrategy;
+    public ExecutionStrategyEntity getExecutionStrategyEntity() {
+        return executionStrategyEntity;
     }
 }

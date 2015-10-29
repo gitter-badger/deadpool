@@ -1,7 +1,10 @@
 package com.deadpool.manager.controller;
 
 import com.deadpool.manager.Application;
-import com.deadpool.manager.repository.*;
+import com.deadpool.manager.repository.ExecutionProcessRepository;
+import com.deadpool.manager.repository.ExecutionStrategyRepository;
+import com.deadpool.manager.repository.HttpActionRepository;
+import com.deadpool.manager.repository.TestSuiteRepository;
 import com.jayway.restassured.RestAssured;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -26,9 +29,6 @@ public abstract class BaseControllerTest {
     protected HttpActionRepository httpActionRepository;
 
     @Autowired
-    protected HttpHeaderRepository httpHeaderRepository;
-
-    @Autowired
     protected ExecutionStrategyRepository executionStrategyRepository;
 
     @Autowired
@@ -42,7 +42,6 @@ public abstract class BaseControllerTest {
         RestAssured.port = port;
         testSuiteRepository.deleteAll();
         httpActionRepository.deleteAll();
-        httpHeaderRepository.deleteAll();
         executionStrategyRepository.deleteAll();
         executionProcessRepository.deleteAll();
     }

@@ -2,16 +2,13 @@ package com.deadpool.manager.domain.model;
 
 import com.deadpool.manager.domain.entity.HttpActionEntity;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-
 /**
  * Created by roothema on 2015.10.29..
  */
 public class HttpAction {
 
     private String name;
-    private Set<HttpHeader> headers;
+    private String headers;
     private String url;
     private String method;
     private String payload;
@@ -24,11 +21,11 @@ public class HttpAction {
         this.name = name;
     }
 
-    public Set<HttpHeader> getHeaders() {
+    public String getHeaders() {
         return headers;
     }
 
-    public void setHeaders(Set<HttpHeader> headers) {
+    public void setHeaders(String headers) {
         this.headers = headers;
     }
 
@@ -59,7 +56,7 @@ public class HttpAction {
     public HttpActionEntity toEntity() {
         HttpActionEntity httpActionEntity = new HttpActionEntity();
         httpActionEntity.setName(name);
-        httpActionEntity.setHeaders(headers.stream().map(HttpHeader::toEntity).collect(Collectors.toSet()));
+        httpActionEntity.setHeaders(headers);
         httpActionEntity.setMethod(method);
         httpActionEntity.setPayload(payload);
         httpActionEntity.setUrl(url);

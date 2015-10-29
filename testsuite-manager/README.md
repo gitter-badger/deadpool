@@ -27,7 +27,7 @@ Subscribe for channel:
         "httpActions":[
             {
                 "name":"create something on XY rest endpoint",
-                "headers":[ {"Accept","something"}, {"foo":"bar"} ],
+                "headers":"Accept: something",
                 "url":"http://localhost:8081/sample-endpoint-post",
                 "method":"POST",
                 "payload":"{'foo':'bar'}"
@@ -60,14 +60,14 @@ Subscribe for channel:
         "httpActions": [
             {
                 "name": "create something on XY rest endpoint",
-                "headers": [],
+                "headers": "",
                 "method": "POST",
                 "payload": "{'foo':'bar'}",
                 "url": "http://localhost:8081/sample-endpoint-post"
             },
             {
                 "name": "get object by XY rest endpoint",
-                "headers": [],
+                "headers": "",
                 "method": "GET",
                 "payload": null,
                 "url": "http://localhost:8081/sample-endpoint-get"
@@ -131,7 +131,7 @@ Subscribe for channel:
         "httpActions":[
             {
                 "name":"create something on XY rest endpoint",
-                "headers":[ {"Accept","something"}, {"foo":"bar"} ],
+                "headers":"Accept: something",
                 "url":"http://localhost:8081/sample-endpoint-post",
                 "method":"POST",
                 "payload":"{'foo':'bar'}"

@@ -9,15 +9,15 @@ import com.deadpool.manager.domain.entity.ExecutionStrategyEntity;
 public class ExecutionStrategy {
 
     private String name;
-    private ExecutionMode executionMode;
+    private ExecutionMode execution;
     private long duration;
 
     public ExecutionStrategy() {
     }
 
-    public ExecutionStrategy(String name, ExecutionMode executionMode, long duration) {
+    public ExecutionStrategy(String name, ExecutionMode execution, long duration) {
         this.name = name;
-        this.executionMode = executionMode;
+        this.execution = execution;
         this.duration = duration;
     }
 
@@ -29,12 +29,12 @@ public class ExecutionStrategy {
         this.name = name;
     }
 
-    public ExecutionMode getExecutionMode() {
-        return executionMode;
+    public ExecutionMode getExecution() {
+        return execution;
     }
 
-    public void setExecutionMode(ExecutionMode executionMode) {
-        this.executionMode = executionMode;
+    public void setExecution(ExecutionMode execution) {
+        this.execution = execution;
     }
 
     public long getDuration() {
@@ -49,7 +49,7 @@ public class ExecutionStrategy {
 
         ExecutionStrategyEntity executionStrategyEntity = new ExecutionStrategyEntity();
         executionStrategyEntity.setName(name);
-        executionStrategyEntity.setExecutionMode(executionMode);
+        executionStrategyEntity.setExecutionMode(execution);
         executionStrategyEntity.setDuration(duration);
 
         return executionStrategyEntity;

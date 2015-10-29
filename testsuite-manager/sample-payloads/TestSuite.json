@@ -3,12 +3,7 @@
   "httpActions": [
     {
       "name": "create something on XY rest endpoint",
-      "headers": [
-        {
-          "Accept": "something"
-        },
-        {"foo": "bar"}
-      ],
+      "headers": "Accept: something",
       "url": "http://localhost:8081/sample-endpoint-post",
       "method": "POST",
       "payload": "{'foo':'bar'}"

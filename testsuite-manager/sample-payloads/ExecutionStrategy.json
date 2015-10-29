@@ -1,5 +1,5 @@
 {
   "name": "sample-ExecutionStrategy",
-  "strategy": "sequential",
+  "execution": "sequential",
   "duration": "3600"
 }

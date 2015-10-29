@@ -2,7 +2,6 @@ package com.deadpool.manager.controller;
 
 import com.deadpool.manager.Application;
 import com.deadpool.manager.domain.entity.HttpActionEntity;
-import com.deadpool.manager.domain.entity.HttpHeaderEntity;
 import com.deadpool.manager.domain.entity.TestSuiteEntity;
 import com.deadpool.manager.repository.TestSuiteRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,7 +46,7 @@ public class GetTestSuiteControllerTestEntity {
     public void testGetTestSuite() throws Exception {
 
         //given
-        HttpHeaderEntity httpHeaderEntity = new HttpHeaderEntity("key", "value");
+//        HttpHeaderEntity httpHeaderEntity = new HttpHeaderEntity("key", "value");
 
         HttpActionEntity postAction = new HttpActionEntity();
         postAction.setName("create something on XY rest endpoint");
@@ -59,7 +58,7 @@ public class GetTestSuiteControllerTestEntity {
         getAction.setName("get object by XY rest endpoint");
         getAction.setMethod("GET");
         getAction.setUrl("http://localhost:8081/sample-endpoint-get");
-        getAction.setHeaders(Stream.of(httpHeaderEntity).collect(Collectors.toSet()));
+        getAction.setHeaders("key:value");
 
         TestSuiteEntity savedTestSuiteEntity = new TestSuiteEntity(SAMPLE_SUITE_NAME, Stream.of(postAction, getAction).collect(Collectors.toList()));
 
@@ -86,6 +85,6 @@ public class GetTestSuiteControllerTestEntity {
                 .anyMatch(c -> getAction.getMethod().equals(c.getMethod())
                         && getAction.getName().equals(c.getName())
                         && getAction.getUrl().equals(c.getUrl())
-                        && c.getHeaders().stream().filter(h -> h.getKey().equals(httpHeaderEntity.getKey()) && h.getValue().equals(httpHeaderEntity.getValue())).findAny().isPresent()));
+                        && c.getHeaders().equals(getAction.getHeaders())));
     }
 }

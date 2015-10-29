@@ -1,11 +1,9 @@
 package com.deadpool.manager.controller.helper;
 
 import com.deadpool.manager.domain.model.HttpAction;
-import com.deadpool.manager.domain.model.HttpHeader;
 import com.deadpool.manager.domain.model.TestSuite;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,13 +16,13 @@ public final class DtoHelper {
         HttpAction httpActionPostXYEndpoint = new HttpAction();
         httpActionPostXYEndpoint.setName("create something on XY rest endpoint");
         httpActionPostXYEndpoint.setMethod("POST");
-        httpActionPostXYEndpoint.setHeaders(Collections.<HttpHeader>emptySet());
+        httpActionPostXYEndpoint.setHeaders("");
         httpActionPostXYEndpoint.setPayload("{'foo':'bar'}");
         httpActionPostXYEndpoint.setUrl("http://localhost:8081/sample-endpoint-post");
 
         HttpAction httpActionGETXYEndpoint = new HttpAction();
         httpActionGETXYEndpoint.setName("get object by XY rest endpoint");
-        httpActionGETXYEndpoint.setHeaders(Collections.<HttpHeader>emptySet());
+        httpActionGETXYEndpoint.setHeaders("");
         httpActionGETXYEndpoint.setMethod("GET");
         httpActionGETXYEndpoint.setPayload("");
         httpActionGETXYEndpoint.setUrl("http://localhost:8081/sample-endpoint-get");

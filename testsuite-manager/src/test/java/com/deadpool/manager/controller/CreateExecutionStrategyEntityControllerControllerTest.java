@@ -32,7 +32,7 @@ public class CreateExecutionStrategyEntityControllerControllerTest extends BaseC
         assertEquals(executionStrategy.getName(), savedExecutionStrategyEntity.getName());
         assertNotNull(savedExecutionStrategyEntity.getId());
         assertEquals(executionStrategy.getDuration(), savedExecutionStrategyEntity.getDuration());
-        assertEquals(executionStrategy.getExecutionMode().name(), savedExecutionStrategyEntity.getExecutionMode().name());
+        assertEquals(executionStrategy.getExecution().name(), savedExecutionStrategyEntity.getExecutionMode().name());
     }
 
     @Test

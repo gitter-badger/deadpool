@@ -8,7 +8,5 @@ import com.deadpool.manager.domain.model.TestSuite;
 public interface TestSuiteService {
     TestSuite createTestSuite(TestSuite testSuite);
 
-    void runTestSuite(String testSuiteName);
-
     TestSuite getTestSuite(String testSuiteName);
 }

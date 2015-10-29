@@ -81,7 +81,7 @@ Subscribe for channel:
     PAYLOAD:
     {
         "name":"sample-ExecutionStrategy",
-        "strategy":"sequential",
+        "execution":"sequential",
         "duration":"3600"
     }
 
@@ -96,7 +96,7 @@ Subscribe for channel:
     OUTPUT:
     {
        "name":"sample-ExecutionStrategy",
-       "strategy":"sequential",
+       "execution":"sequential",
        "duration":"3600"
     }
 

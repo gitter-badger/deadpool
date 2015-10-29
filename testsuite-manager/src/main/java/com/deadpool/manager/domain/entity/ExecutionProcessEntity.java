@@ -2,9 +2,7 @@ package com.deadpool.manager.domain.entity;
 
 import com.deadpool.manager.domain.Status;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 /**
@@ -15,9 +13,10 @@ public class ExecutionProcessEntity {
 
     @Id
     @Column(unique = true, nullable = false)
-    private UUID id;
+    private String id;
 
     @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
     private Status status;
 
     @Column(nullable = false)
@@ -30,13 +29,25 @@ public class ExecutionProcessEntity {
     }
 
     public ExecutionProcessEntity(Status status, String testSuiteName, String executionStrategyName) {
-        id = UUID.randomUUID();
+        id = UUID.randomUUID().toString();
         this.status = status;
         this.testSuiteName = testSuiteName;
         this.executionStrategyName = executionStrategyName;
     }
 
-    public UUID getId() {
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setTestSuiteName(String testSuiteName) {
+        this.testSuiteName = testSuiteName;
+    }
+
+    public void setExecutionStrategyName(String executionStrategyName) {
+        this.executionStrategyName = executionStrategyName;
+    }
+
+    public String getId() {
         return id;
     }
 

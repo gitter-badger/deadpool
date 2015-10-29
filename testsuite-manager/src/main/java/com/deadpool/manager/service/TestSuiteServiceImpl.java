@@ -27,11 +27,6 @@ public class TestSuiteServiceImpl implements TestSuiteService {
     }
 
     @Override
-    public void runTestSuite(String testSuiteName) {
-        Optional<TestSuiteEntity> testSuiteEntity = testSuiteRepository.findByName(testSuiteName);
-    }
-
-    @Override
     public TestSuite getTestSuite(String testSuiteName) {
         return retrieveTestSuite(testSuiteName).toDTO();
     }

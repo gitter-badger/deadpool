@@ -22,7 +22,7 @@ public class CreateExecutionStrategyController {
     private ExecutionStrategyService executionStrategyService;
 
     @RequestMapping(value = "/execution-strategy", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity createExecutionStrategy(@RequestBody() ExecutionStrategy executionStrategy) {
+    public ResponseEntity createExecutionStrategy(@RequestBody ExecutionStrategy executionStrategy) {
 
         ExecutionStrategy savedExecutionStrategy = executionStrategyService.createExecutionStrategy(executionStrategy);
 

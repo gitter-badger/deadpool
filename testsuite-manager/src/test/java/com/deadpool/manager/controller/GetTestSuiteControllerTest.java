@@ -62,8 +62,6 @@ public class GetTestSuiteControllerTest {
         getAction.setHeaders(Stream.of(httpHeader).collect(Collectors.toSet()));
 
         TestSuite savedTestSuite = new TestSuite(SAMPLE_SUITE_NAME, Stream.of(postAction, getAction).collect(Collectors.toList()));
-        getAction.setTestSuite(savedTestSuite);
-        postAction.setTestSuite(savedTestSuite);
 
         testSuiteRepository.save(savedTestSuite);
 

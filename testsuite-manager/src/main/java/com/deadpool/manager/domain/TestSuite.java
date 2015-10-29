@@ -14,19 +14,15 @@ public class TestSuite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 100, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "testSuite", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Column(nullable = false)
-    private List<HttpAction> httpActions;
-
-    @OneToMany
-    @JoinTable(name = "TESTSUITE_TO_STRATEGY",
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "TESTSUITE_TO_ACTION",
             joinColumns = @JoinColumn(name = "testSuite_id"),
-            inverseJoinColumns = @JoinColumn(name = "executionStrategy_id"))
-    @Column(nullable = false)
-    private List<ExecutionStrategy> executionStrategies;
+            inverseJoinColumns = @JoinColumn(name = "httpAction_id"))
+    private List<HttpAction> httpActions;
 
     @Version
     private Integer version;
@@ -37,12 +33,6 @@ public class TestSuite {
     public TestSuite(String name, List<HttpAction> httpActions) {
         this.name = name;
         this.httpActions = httpActions;
-    }
-
-    public TestSuite(String name, List<HttpAction> httpActions, List<ExecutionStrategy> executionStrategies) {
-        this.name = name;
-        this.httpActions = httpActions;
-        this.executionStrategies = executionStrategies;
     }
 
     public Long getId() {
@@ -65,21 +55,12 @@ public class TestSuite {
         this.httpActions = httpActions;
     }
 
-    public List<ExecutionStrategy> getExecutionStrategies() {
-        return executionStrategies;
-    }
-
-    public void setExecutionStrategies(List<ExecutionStrategy> executionStrategies) {
-        this.executionStrategies = executionStrategies;
-    }
-
     @Override
     public String toString() {
         return "TestSuite{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", httpActions=" + httpActions +
-                ", executionStrategies=" + executionStrategies +
                 ", version=" + version +
                 '}';
     }

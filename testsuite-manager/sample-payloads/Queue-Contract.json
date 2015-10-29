@@ -24,5 +24,6 @@
     "name": "sample-ExecutionStrategy",
     "strategy": "sequential",
     "duration": "3600"
-  }
+  },
+  "execution-process-id": "<uuid>"
 }

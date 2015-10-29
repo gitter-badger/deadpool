@@ -1,7 +1,5 @@
 package com.deadpool.manager.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -16,13 +14,8 @@ public class HttpAction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100, unique = true)
     private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "httpAction_id")
-    @JsonIgnore
-    private TestSuite testSuite;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "ACTION_TO_HEADER",
@@ -90,20 +83,11 @@ public class HttpAction {
         this.payload = payload;
     }
 
-    public TestSuite getTestSuite() {
-        return testSuite;
-    }
-
-    public void setTestSuite(TestSuite testSuite) {
-        this.testSuite = testSuite;
-    }
-
     @Override
     public String toString() {
         return "HttpAction{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", testSuite=" + testSuite +
                 ", headers=" + headers +
                 ", url='" + url + '\'' +
                 ", method='" + method + '\'' +

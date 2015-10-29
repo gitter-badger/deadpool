@@ -13,10 +13,15 @@ public class ExecutionStrategy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 100, unique = true)
     private String name;
 
-    // TODO: create foreign key constraint for TestSuite entity, bidirectional and eager fetch
+    @Column(nullable = false)
+    private ExecutionMode executionMode;
+
+    @Column(nullable = false)
+    private long duration;
+
     @Version
     private Integer version;
 
@@ -39,11 +44,19 @@ public class ExecutionStrategy {
         this.name = name;
     }
 
-    public Integer getVersion() {
-        return version;
+    public ExecutionMode getExecutionMode() {
+        return executionMode;
     }
 
-    public void setVersion(Integer version) {
-        this.version = version;
+    public void setExecutionMode(ExecutionMode executionMode) {
+        this.executionMode = executionMode;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
     }
 }

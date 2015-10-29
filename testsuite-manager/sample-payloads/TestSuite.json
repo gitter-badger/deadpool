@@ -1,23 +1,23 @@
 {
-  "id": null,
   "name": "sample-SuiteName",
   "httpActions": [
     {
-      "id": null,
       "name": "create something on XY rest endpoint",
-      "headers": null,
+      "headers": [
+        {
+          "Accept",
+          "something"
+        },
+        {"foo": "bar"}
+      ],
       "url": "http://localhost:8081/sample-endpoint-post",
       "method": "POST",
       "payload": "{'foo':'bar'}"
     },
     {
-      "id": null,
       "name": "get object by XY rest endpoint",
-      "headers": null,
       "url": "http://localhost:8081/sample-endpoint-get",
-      "method": "GET",
-      "payload": null
+      "method": "GET"
     }
-  ],
-  "executionStrategies": null
+  ]
 }

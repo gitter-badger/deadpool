@@ -21,7 +21,7 @@ public class DeleteTestSuiteController {
     @RequestMapping(value = "/test-suite/{name}", method = RequestMethod.DELETE)
     public ResponseEntity deleteTestSuite(@PathVariable("name") String testSuiteName) {
         testSuiteService.deleteTestSuite(testSuiteName);
-        return new ResponseEntity(HttpStatus.ACCEPTED);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
 }

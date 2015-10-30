@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/roothema/deadpool.svg?branch=master)](https://travis-ci.org/roothema/deadpool)
+
 # deadpool
 The project focuses on creating an open source tool for benchmark testing in Cloud Foundry
 

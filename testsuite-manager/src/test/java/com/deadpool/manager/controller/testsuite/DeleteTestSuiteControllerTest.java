@@ -29,7 +29,7 @@ public class DeleteTestSuiteControllerTest extends BaseControllerTest {
         Response response = HttpRequestHelper.callDeleteTestSuiteEndpoint(testSuite_B.getName());
 
         // then
-        assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+        assertEquals(HttpStatus.NO_CONTENT.value(), response.getStatusCode());
         assertEquals("", response.getBody().asString());
 
         assertEquals(2, testSuiteRepository.count());

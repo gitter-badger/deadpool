@@ -40,4 +40,8 @@ public class HttpRequestHelper {
     public static Response callDeleteTestSuiteEndpoint(String testSuiteName) {
         return delete("/test-suite/" + testSuiteName);
     }
+
+    public static Response callDeleteExecutionStrategyEndpoint(String executionStrategyName) {
+        return delete("/execution-strategy/" + executionStrategyName);
+    }
 }

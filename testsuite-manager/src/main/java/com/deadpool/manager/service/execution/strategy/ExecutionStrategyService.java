@@ -10,4 +10,6 @@ public interface ExecutionStrategyService {
     ExecutionStrategy createExecutionStrategy(ExecutionStrategy executionStrategy);
 
     ExecutionStrategy getExecutionStrategy(String executionStrategyName);
+
+    void deleteExecutionStrategy(String executionStrategyName);
 }

@@ -39,11 +39,13 @@ public class RunTestSuiteServiceImpl implements RunTestSuiteService {
         TestSuite testSuite = testSuiteService.getTestSuite(processDescriptor.getTestSuiteName());
         ExecutionStrategy executionStrategy = executionStrategyService.getExecutionStrategy(processDescriptor.getExecutionStrategyName());
 
+        ExecutionProcessEntity savedExecutionProcess = executionProcessRepository.save(new ExecutionProcessEntity(Status.RUNNING, testSuite.getName(), executionStrategy.getName()));
+
         TestSuiteWithStrategy testSuiteWithStrategy = new TestSuiteWithStrategy();
         testSuiteWithStrategy.setTestSuite(testSuite);
         testSuiteWithStrategy.setExecutionStrategy(executionStrategy);
+        testSuiteWithStrategy.setExecutionProcessId(savedExecutionProcess.getId());
 
-        ExecutionProcessEntity savedExecutionProcess = executionProcessRepository.save(new ExecutionProcessEntity(Status.RUNNING, testSuite.getName(), executionStrategy.getName()));
         rabbitTemplate.convertAndSend(queueName, testSuiteWithStrategy);
 
         return savedExecutionProcess.getId();

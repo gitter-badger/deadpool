@@ -146,5 +146,6 @@ Subscribe for channel:
                "name":"sample-ExecutionStrategy",
                "strategy":"sequential",
                "duration":"3600"
-        }
+        },
+        "executionProcessId":"<UUID of the execution process>"
     }

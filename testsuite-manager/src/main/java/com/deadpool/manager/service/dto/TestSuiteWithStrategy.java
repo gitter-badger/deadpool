@@ -10,6 +10,15 @@ public class TestSuiteWithStrategy {
 
     private TestSuite testSuite;
     private ExecutionStrategy executionStrategy;
+    private String executionProcessId;
+
+    public String getExecutionProcessId() {
+        return executionProcessId;
+    }
+
+    public void setExecutionProcessId(String executionProcessId) {
+        this.executionProcessId = executionProcessId;
+    }
 
     public TestSuiteWithStrategy() {
     }

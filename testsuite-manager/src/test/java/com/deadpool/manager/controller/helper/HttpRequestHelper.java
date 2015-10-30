@@ -1,7 +1,7 @@
 package com.deadpool.manager.controller.helper;
 
-import com.deadpool.manager.domain.model.RunTestSuiteDto;
 import com.deadpool.manager.domain.model.ExecutionStrategy;
+import com.deadpool.manager.domain.model.RunTestSuiteDto;
 import com.deadpool.manager.domain.model.TestSuite;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
@@ -28,6 +28,10 @@ public class HttpRequestHelper {
 
     public static Response callGetExecutionStrategyEndpoint(String executionStrategyName) {
         return get("/execution-strategy/" + executionStrategyName);
+    }
+
+    public static Response callListTestSuiteEndpoint() {
+        return get("/test-suite");
     }
 
     public static Response callRunTestSuiteEndpoint(RunTestSuiteDto runTestSuiteDto) {

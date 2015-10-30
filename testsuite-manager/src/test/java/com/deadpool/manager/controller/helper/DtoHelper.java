@@ -38,4 +38,30 @@ public final class DtoHelper {
         return testSuite;
     }
 
+    public static TestSuite createTestSuiteWithName(String testSuiteName) {
+        HttpAction httpActionPostXYEndpoint = new HttpAction();
+        httpActionPostXYEndpoint.setName("create something on XY rest endpoint");
+        httpActionPostXYEndpoint.setMethod("POST");
+        httpActionPostXYEndpoint.setHeaders("");
+        httpActionPostXYEndpoint.setPayload("{'foo':'bar'}");
+        httpActionPostXYEndpoint.setUrl("http://localhost:8081/sample-endpoint-post");
+
+        HttpAction httpActionGETXYEndpoint = new HttpAction();
+        httpActionGETXYEndpoint.setName("get object by XY rest endpoint");
+        httpActionGETXYEndpoint.setHeaders("");
+        httpActionGETXYEndpoint.setMethod("GET");
+        httpActionGETXYEndpoint.setPayload("");
+        httpActionGETXYEndpoint.setUrl("http://localhost:8081/sample-endpoint-get");
+
+        List<HttpAction> httpActions = new ArrayList<>();
+        httpActions.add(httpActionPostXYEndpoint);
+        httpActions.add(httpActionGETXYEndpoint);
+
+        TestSuite testSuite = new TestSuite();
+        testSuite.setName(testSuiteName);
+        testSuite.setHttpActions(httpActions);
+
+        return testSuite;
+    }
+
 }

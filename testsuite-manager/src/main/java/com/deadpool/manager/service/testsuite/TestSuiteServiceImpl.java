@@ -8,7 +8,9 @@ import com.deadpool.manager.service.exception.ResourceNotExists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by roothema on 2015.10.08..
@@ -29,6 +31,12 @@ public class TestSuiteServiceImpl implements TestSuiteService {
     @Override
     public TestSuite getTestSuite(String testSuiteName) {
         return retrieveTestSuite(testSuiteName).toDTO();
+    }
+
+    @Override
+    public List<TestSuite> listTestSuites() {
+        List<TestSuiteEntity> testSuiteEntities = testSuiteRepository.findAll();
+        return testSuiteEntities.stream().map(TestSuiteEntity::toDTO).collect(Collectors.toList());
     }
 
     private TestSuiteEntity retrieveTestSuite(String testSuiteName) {

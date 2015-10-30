@@ -3,6 +3,7 @@ package com.deadpool.manager.repository;
 import com.deadpool.manager.domain.entity.TestSuiteEntity;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -10,4 +11,6 @@ import java.util.Optional;
  */
 public interface TestSuiteRepository extends CrudRepository<TestSuiteEntity, Long> {
     Optional<TestSuiteEntity> findByName(String testSuiteName);
+
+    List<TestSuiteEntity> findAll();
 }

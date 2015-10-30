@@ -32,6 +32,11 @@ public class ExecutionStrategyServiceImpl implements ExecutionStrategyService {
         return retrieveExecutionStrategy(executionStrategyName).toDTO();
     }
 
+    @Override
+    public void deleteExecutionStrategy(String executionStrategyName) {
+        executionStrategyRepository.removeByName(executionStrategyName);
+    }
+
     private ExecutionStrategyEntity retrieveExecutionStrategy(String executionStrategyName) {
         Optional<ExecutionStrategyEntity> strategyEntity = executionStrategyRepository.findByName(executionStrategyName);
         if (!strategyEntity.isPresent()) {

@@ -1,12 +1,14 @@
-package com.deadpool.manager.service;
+package com.deadpool.manager.service.execution.process;
 
 import com.deadpool.manager.domain.Status;
-import com.deadpool.manager.domain.model.RunTestSuiteDto;
 import com.deadpool.manager.domain.entity.ExecutionProcessEntity;
 import com.deadpool.manager.domain.model.ExecutionStrategy;
+import com.deadpool.manager.domain.model.RunTestSuiteDto;
 import com.deadpool.manager.domain.model.TestSuite;
 import com.deadpool.manager.repository.ExecutionProcessRepository;
 import com.deadpool.manager.service.dto.TestSuiteWithStrategy;
+import com.deadpool.manager.service.execution.strategy.ExecutionStrategyService;
+import com.deadpool.manager.service.testsuite.TestSuiteService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

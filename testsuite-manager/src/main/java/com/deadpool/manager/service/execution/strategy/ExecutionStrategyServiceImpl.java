@@ -1,4 +1,4 @@
-package com.deadpool.manager.service;
+package com.deadpool.manager.service.execution.strategy;
 
 import com.deadpool.manager.domain.entity.ExecutionStrategyEntity;
 import com.deadpool.manager.domain.model.ExecutionStrategy;

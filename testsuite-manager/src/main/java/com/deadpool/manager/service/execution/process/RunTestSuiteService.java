@@ -1,4 +1,4 @@
-package com.deadpool.manager.service;
+package com.deadpool.manager.service.execution.process;
 
 import com.deadpool.manager.domain.model.RunTestSuiteDto;
 

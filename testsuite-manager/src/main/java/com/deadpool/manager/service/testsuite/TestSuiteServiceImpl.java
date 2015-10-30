@@ -1,4 +1,4 @@
-package com.deadpool.manager.service;
+package com.deadpool.manager.service.testsuite;
 
 import com.deadpool.manager.domain.entity.TestSuiteEntity;
 import com.deadpool.manager.domain.model.TestSuite;

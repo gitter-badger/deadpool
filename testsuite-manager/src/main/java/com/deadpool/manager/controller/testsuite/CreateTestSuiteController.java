@@ -1,7 +1,7 @@
-package com.deadpool.manager.controller;
+package com.deadpool.manager.controller.testsuite;
 
 import com.deadpool.manager.domain.model.TestSuite;
-import com.deadpool.manager.service.TestSuiteService;
+import com.deadpool.manager.service.testsuite.TestSuiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
-package com.deadpool.manager.controller;
+package com.deadpool.manager.controller.execution.strategy;
 
 import com.deadpool.manager.domain.model.ExecutionStrategy;
-import com.deadpool.manager.service.ExecutionStrategyService;
+import com.deadpool.manager.service.execution.strategy.ExecutionStrategyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

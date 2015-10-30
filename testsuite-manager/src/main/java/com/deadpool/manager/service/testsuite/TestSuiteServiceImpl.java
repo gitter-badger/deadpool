@@ -39,6 +39,11 @@ public class TestSuiteServiceImpl implements TestSuiteService {
         return testSuiteEntities.stream().map(TestSuiteEntity::toDTO).collect(Collectors.toList());
     }
 
+    @Override
+    public void deleteTestSuite(String testSuiteName) {
+        testSuiteRepository.delete(retrieveTestSuite(testSuiteName).getId());
+    }
+
     private TestSuiteEntity retrieveTestSuite(String testSuiteName) {
         Optional<TestSuiteEntity> suiteEntity = testSuiteRepository.findByName(testSuiteName);
         if (!suiteEntity.isPresent()) {

@@ -1,7 +1,7 @@
 package com.deadpool.manager.controller.helper;
 
 import com.deadpool.manager.domain.model.ExecutionStrategy;
-import com.deadpool.manager.domain.model.RunTestSuiteDto;
+import com.deadpool.manager.domain.model.ProcessDescriptor;
 import com.deadpool.manager.domain.model.TestSuite;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
@@ -34,7 +34,7 @@ public class HttpRequestHelper {
         return get("/test-suite");
     }
 
-    public static Response callRunTestSuiteEndpoint(RunTestSuiteDto runTestSuiteDto) {
-        return given().contentType(ContentType.JSON).body(runTestSuiteDto).when().post("/run/");
+    public static Response callRunTestSuiteEndpoint(ProcessDescriptor processDescriptor) {
+        return given().contentType(ContentType.JSON).body(processDescriptor).when().post("/run/");
     }
 }

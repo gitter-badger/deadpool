@@ -3,12 +3,12 @@ package com.deadpool.manager.domain.model;
 /**
  * Created by daniel on 10/29/2015.
  */
-public class RunTestSuiteDto {
+public class ProcessDescriptor {
 
     private String testSuiteName;
     private String executionStrategyName;
 
-    public RunTestSuiteDto() {
+    public ProcessDescriptor() {
     }
 
     public String getTestSuiteName() {

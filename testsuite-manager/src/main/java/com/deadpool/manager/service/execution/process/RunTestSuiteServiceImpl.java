@@ -3,7 +3,7 @@ package com.deadpool.manager.service.execution.process;
 import com.deadpool.manager.domain.Status;
 import com.deadpool.manager.domain.entity.ExecutionProcessEntity;
 import com.deadpool.manager.domain.model.ExecutionStrategy;
-import com.deadpool.manager.domain.model.RunTestSuiteDto;
+import com.deadpool.manager.domain.model.ProcessDescriptor;
 import com.deadpool.manager.domain.model.TestSuite;
 import com.deadpool.manager.repository.ExecutionProcessRepository;
 import com.deadpool.manager.service.dto.TestSuiteWithStrategy;
@@ -35,9 +35,9 @@ public class RunTestSuiteServiceImpl implements RunTestSuiteService {
     private String queueName;
 
     @Override
-    public String runTestSuite(RunTestSuiteDto runTestSuiteDto) {
-        TestSuite testSuite = testSuiteService.getTestSuite(runTestSuiteDto.getTestSuiteName());
-        ExecutionStrategy executionStrategy = executionStrategyService.getExecutionStrategy(runTestSuiteDto.getExecutionStrategyName());
+    public String runTestSuite(ProcessDescriptor processDescriptor) {
+        TestSuite testSuite = testSuiteService.getTestSuite(processDescriptor.getTestSuiteName());
+        ExecutionStrategy executionStrategy = executionStrategyService.getExecutionStrategy(processDescriptor.getExecutionStrategyName());
 
         TestSuiteWithStrategy testSuiteWithStrategy = new TestSuiteWithStrategy();
         testSuiteWithStrategy.setTestSuite(testSuite);

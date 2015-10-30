@@ -106,8 +106,8 @@ Subscribe for channel:
 
     PAYLOAD:
     {
-        "testsuite-name":"sample-SuiteName",
-        "strategy-name":"sample-ExecutionStrategy"
+        "testSuiteName":"sample-SuiteName",
+        "executionStrategyName":"sample-ExecutionStrategy"
     }
 
     RESPONSE:

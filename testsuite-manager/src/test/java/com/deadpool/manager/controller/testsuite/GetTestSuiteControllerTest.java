@@ -1,5 +1,6 @@
-package com.deadpool.manager.controller;
+package com.deadpool.manager.controller.testsuite;
 
+import com.deadpool.manager.controller.BaseControllerTest;
 import com.deadpool.manager.controller.helper.DtoHelper;
 import com.deadpool.manager.controller.helper.HttpRequestHelper;
 import com.deadpool.manager.domain.model.HttpAction;

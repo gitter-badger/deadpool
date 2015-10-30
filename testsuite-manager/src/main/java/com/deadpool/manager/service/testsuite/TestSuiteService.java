@@ -13,4 +13,6 @@ public interface TestSuiteService {
     TestSuite getTestSuite(String testSuiteName);
 
     List<TestSuite> listTestSuites();
+
+    void deleteTestSuite(String testSuiteName);
 }

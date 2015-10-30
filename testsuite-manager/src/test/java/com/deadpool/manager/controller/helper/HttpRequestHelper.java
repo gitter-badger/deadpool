@@ -6,8 +6,7 @@ import com.deadpool.manager.domain.model.TestSuite;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
 
-import static com.jayway.restassured.RestAssured.get;
-import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.RestAssured.*;
 
 /**
  * Created by roothema on 2015.10.08..
@@ -36,5 +35,9 @@ public class HttpRequestHelper {
 
     public static Response callRunTestSuiteEndpoint(RunTestSuiteDto runTestSuiteDto) {
         return given().contentType(ContentType.JSON).body(runTestSuiteDto).when().post("/run/");
+    }
+
+    public static Response callDeleteTestSuiteEndpoint(String testSuiteName) {
+        return delete("/test-suite/" + testSuiteName);
     }
 }

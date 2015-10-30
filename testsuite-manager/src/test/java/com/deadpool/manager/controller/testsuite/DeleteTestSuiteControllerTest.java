@@ -30,6 +30,7 @@ public class DeleteTestSuiteControllerTest extends BaseControllerTest {
 
         // then
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+        assertEquals("", response.getBody().asString());
 
         assertEquals(2, testSuiteRepository.count());
         assertFalse(testSuiteRepository.findByName(testSuite_B.getName()).isPresent());
